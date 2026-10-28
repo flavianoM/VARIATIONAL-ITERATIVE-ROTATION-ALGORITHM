@@ -7,11 +7,11 @@ through the spin dynamics.
 
 ## Compile (requires OpenMP)
 
-    gcc -O3 -march=native -fopenmp -ffast-math viral_backprop.c -o viral_backprop -lm
+    gcc -O3 -march=native -fopenmp -ffast-math viral.c -o viral -lm
 
 ## Run
 
-    ./viral_backprop
+    ./viral
 
 ## Output
 
