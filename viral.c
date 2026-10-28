@@ -5,9 +5,9 @@
 *
 * Parallelized over disorder instances using OpenMP (you must have openMP).
 *
-* Compile:  gcc -O3 -march=native -fopenmp -ffast-math viral_backprop.c -o viral_backprop -lm
+* Compile:  gcc -O3 -march=native -fopenmp -ffast-math viral.c -o viral -lm
 *
-* To Run:      ./viral_backprop
+* To Run:      ./viral
 *
 * Flaviano Morone 
 */
