@@ -1,7 +1,30 @@
-This code optimizes the variational parameters (alpha, beta, gamma) for the Variational Iterative Rotation Algorithm applied to the Sherrington-Kirkpatrick spin-glass model and validate the optimized parameters on a large instance (N=16000), reporting both continuous and thresholded energy densities.
+# VIRAL — training on the SK model with backpropagation
 
-To compile the code with OpenMP using gcc: 
-gcc -O3 -fopenmp viral.c -o viral -lm
+This code trains the variational parameters {alpha, beta_n, gamma_n} 
+of the Variational Iterative Rotation Algorithm (VIRAL) on the 
+Sherrington-Kirkpatrick spin-glass model by exact backpropagation 
+through the spin dynamics.
 
-To run the simulation:
-./viral
+## Compile (requires OpenMP)
+
+    gcc -O3 -march=native -fopenmp -ffast-math viral_backprop.c -o viral_backprop -lm
+
+## Run
+
+    ./viral_backprop
+
+## Output
+
+- `best_energy_N*_NUM_INSTANCES*_PMAX*.txt`: best continuous and 
+  thresholded energy density at each depth p.
+- `best_param_N*_NUM_INSTANCES*_PMAX*_Layer*.txt`: the optimized 
+  schedule (beta_n, gamma_n) at each depth; the optimal alpha and 
+  the final schedule are also printed to stdout.
+
+## Parameters
+
+System size, number of disorder instances, maximal depth, and 
+optimizer settings are set by the #define's at the top of the file 
+(defaults: N = 1024, 10 instances, P_MAX = 100). The results in the 
+paper were obtained with N = 2^14, 24 instances, and depths up to 
+p = 130.
